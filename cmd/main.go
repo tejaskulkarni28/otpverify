@@ -5,9 +5,18 @@ import (
 )
 
 func main(){
+
+	// 1. greetings
 	functions.Greetings()
+
+	// 2. input 
 	var name, phone, message = functions.Inputs()
+
+	// 3. output
 	functions.Outputs(name, phone, message)
 
-	fmt.Println(verification)
+	// passing output values to sendOTP.go
+	functions.SendOTP(phone)
+
+
 }

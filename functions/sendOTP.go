@@ -1,7 +1,8 @@
 package functions
 import (
 	"fmt"
-	// verification "github.com/twilio/twilio-go/rest/verify/v2"
+	"github.com/twilio/twilio-go"
+	verification "github.com/twilio/twilio-go/rest/verify/v2"
 	"github.com/joho/godotenv"
     "os"
 )
@@ -15,20 +16,36 @@ func SendOTP(phone string){
 	}
 	// accesing env variables
 	service_sid := os.Getenv("VERIFY_SERVICE_SID")
-	fmt.Println(service_sid)
-	return
+	// account_sid := os.Getenv("TWILIO_ACCOUNT_SID")
+	// auth_token := os.Getenv("TWILIO_AUTH_TOKEN")
+
 	// +16562230173
-	// if phone != ""{
-	// 	to := "+1" + phone
+	if phone != ""{
+		to := "+1" + phone
+		fmt.Println(to)
 
-	// 	client := twilio.NewRestClient()
-	// 	params := &verification.CreateVerificationParams{}
+		// created a new twilio rest client 
+		client := twilio.NewRestClient()
 
-	// 	params.SetTo(to)
-	// 	params.SetChannel("sms")
+		// creating parameters and initializing 
+		params := &verification.CreateVerificationParams{}
 
-	// 	client.VerifyV2.CreateVerification( params)
-	// }else{
-	// 	fmt.Println("Phone number not recieved! ")
-	// }
+		// setting phone number
+		params.SetTo(to)
+		params.SetChannel("sms")
+
+		res, err:= client.VerifyV2.CreateVerification(service_sid, params)
+		if err != nil{
+			fmt.Println(err.Error())
+		}else{
+			fmt.Println(res)
+			// if res.Sid != nil {
+			// 	fmt.Println(*res.Sid)
+			// } else {
+			// 	fmt.Println(res)
+			// }
+		}
+	}else{
+		fmt.Println("Phone number not recieved! ")
+	}
 }

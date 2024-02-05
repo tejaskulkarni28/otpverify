@@ -1,12 +1,34 @@
 package functions
 import (
 	"fmt"
+	// verification "github.com/twilio/twilio-go/rest/verify/v2"
+	"github.com/joho/godotenv"
+    "os"
 )
 
 func SendOTP(phone string){
-	if phone != ""{
-		fmt.Println(phone)
-	}else{
-		fmt.Println("Phone number not recieved! ")
+
+	err := godotenv.Load("auth/.env")
+	if err != nil{
+		fmt.Println("Error loading env file", err)
+		return
 	}
+	// accesing env variables
+	service_sid := os.Getenv("VERIFY_SERVICE_SID")
+	fmt.Println(service_sid)
+	return
+	// +16562230173
+	// if phone != ""{
+	// 	to := "+1" + phone
+
+	// 	client := twilio.NewRestClient()
+	// 	params := &verification.CreateVerificationParams{}
+
+	// 	params.SetTo(to)
+	// 	params.SetChannel("sms")
+
+	// 	client.VerifyV2.CreateVerification( params)
+	// }else{
+	// 	fmt.Println("Phone number not recieved! ")
+	// }
 }

@@ -1,3 +1,3 @@
-module github.com/tejaskulkarni/otpverify
+module tejaskulkarni28
 
 go 1.21.6

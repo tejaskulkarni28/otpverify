@@ -3,7 +3,7 @@ package functions
 import "fmt"
 
 func Greetings(){
-	fmt.Println("Welcome to GoLang! OTP verification project")
+	fmt.Println("Welcome to golang! OTP verification project")
 }
 
 func Inputs() (string, string, string){

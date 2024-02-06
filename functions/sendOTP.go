@@ -16,8 +16,6 @@ func SendOTP(phone string){
 	}
 	// accesing env variables
 	service_sid := os.Getenv("VERIFY_SERVICE_SID")
-	// account_sid := os.Getenv("TWILIO_ACCOUNT_SID")
-	// auth_token := os.Getenv("TWILIO_AUTH_TOKEN")
 
 	// +16562230173
 	if phone != ""{

@@ -19,7 +19,7 @@ func SendOTP(phone string){
 
 	// +16562230173
 	if phone != ""{
-		to := "+1" + phone
+		to := "+91" + phone
 		fmt.Println(to)
 
 		// created a new twilio rest client 
@@ -36,12 +36,9 @@ func SendOTP(phone string){
 		if err != nil{
 			fmt.Println(err.Error())
 		}else{
+			// send the response to verify otp page
+			// I need to send http request for verifyOTP page
 			fmt.Println(res)
-			// if res.Sid != nil {
-			// 	fmt.Println(*res.Sid)
-			// } else {
-			// 	fmt.Println(res)
-			// }
 		}
 	}else{
 		fmt.Println("Phone number not recieved! ")
